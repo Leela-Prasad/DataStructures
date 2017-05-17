@@ -22,7 +22,10 @@ public class TowerOfHanoi {
 	 * 3. Now the problem is reduced to the smaller problem with number of discs as n-1.
 	 * 	  after moving the disc from A to B we can ignore that disc as it is in correct position and 
 	 * 	  we will not disturb its position.
-	 * 4. Now we have to move (n-1) discs from C to B using A tower. -> which is the problem statement. 
+	 * 4. Now we have to move (n-1) discs from C to B using A tower. -> which is the problem statement.
+	 * 
+	 *  Time Complexity T(n)=O(2^n)
+	 *  Space Complexity S(n)=O(n)
 	 */
 	public void TOH(Integer numberOfDiscs,String a, String b,String c) {
 		
