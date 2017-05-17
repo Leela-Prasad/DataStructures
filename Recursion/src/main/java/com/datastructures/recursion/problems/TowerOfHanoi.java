@@ -40,9 +40,4 @@ public class TowerOfHanoi {
 		
 	}
 
-	public static void main(String[] args) {
-		
-		new TowerOfHanoi().TOH(3, "A", "B", "C");
-
-	}
 }
