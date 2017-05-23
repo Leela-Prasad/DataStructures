@@ -3,3 +3,4 @@
 Servers*
 RemoteSystemsTempFiles*
 *.class
+*.settings
