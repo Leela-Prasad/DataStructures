@@ -59,19 +59,13 @@ public class BinarySearchTree implements ITree{
 		Queue<Node> queue = new LinkedList<>();
 		
 		queue.offer(root);
-		//queue.offer(null);
 		while(!(queue.isEmpty())) {
 			Node temp = queue.poll();
-			//if(temp!=null) {
 				System.out.print(temp.getData() + "\t");
 				if(temp.getLeft()!=null)
 					queue.offer(temp.getLeft());
 				if(temp.getRight()!=null)
 					queue.offer(temp.getRight());
-			/*}else {
-				if(!(queue.isEmpty()))
-					queue.offer(null);
-			}*/
 		}
 	}
 	

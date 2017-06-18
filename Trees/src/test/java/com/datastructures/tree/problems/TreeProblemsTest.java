@@ -157,4 +157,160 @@ public class TreeProblemsTest {
 		assertEquals(new Integer(4),treeProblems.findNodeLevel(bst.getRoot(), 37));
 		assertEquals(new Integer(-1),treeProblems.findNodeLevel(bst.getRoot(), 100));
 	}
+	
+	@Test
+	public void testPrintNodesAtKthLevel() {
+		treeProblems.printNodesAtKthLevel(bst.getRoot(), 3);
+	}
+	
+	@Test
+	public void testGetParent() {
+		assertEquals(new Integer(62),treeProblems.getParent(bst.getRoot(), new Node(58)).getData());
+		
+		assertEquals(new Integer(20),treeProblems.getParent(bst.getRoot(), new Node(37)).getData());
+		
+		assertNull(treeProblems.getParent(bst.getRoot(), new Node(25)));
+	}
+	
+	@Test
+	public void testVerticalOrderTraversal() {
+		treeProblems.verticalOrderTraversal(bst.getRoot());
+	}
+	
+	@Test
+	public void testIsSumTree_Valid() {
+		bst = new BinarySearchTree();
+		bst.insert(new Node(50));
+		Node root = bst.getRoot();
+		root.setLeft(new Node(15));
+		root.setRight(new Node(10));
+		root.getLeft().setLeft(new Node(10));
+		root.getLeft().setRight(new Node(5));
+		root.getRight().setLeft(new Node(7));
+		root.getRight().setRight(new Node(3));
+		assertNotEquals(new Integer(-1),treeProblems.isSumTree(bst.getRoot()));
+	}
+	
+	
+	@Test
+	public void testIsSumTree_NotValid() {
+		bst = new BinarySearchTree();
+		bst.insert(new Node(50));
+		Node root = bst.getRoot();
+		root.setLeft(new Node(15));
+		root.setRight(new Node(10));
+		root.getLeft().setLeft(new Node(10));
+		root.getLeft().setRight(new Node(5));
+		root.getRight().setLeft(new Node(7));
+		root.getRight().setRight(new Node(1));
+		assertEquals(new Integer(-1),treeProblems.isSumTree(bst.getRoot()));
+	}
+	
+	@Test
+	public void testGetVerticalSum() {
+		System.out.println(treeProblems.getVerticalSum(bst.getRoot()));
+	}
+	
+	@Test
+	public void testPrintTopView() {
+		treeProblems.printTopView(bst.getRoot());
+	}
+	
+	@Test
+	public void testPrintBottomView() {
+		treeProblems.printBottomView(bst.getRoot());
+	}
+	
+	@Test
+	public void testPrintLeftView() {
+		treeProblems.printLeftView(bst.getRoot());
+	}
+	
+	@Test
+	public void testPrintRightView() {
+		treeProblems.printRightView(bst.getRoot());
+	}
+	
+	@Test
+	public void testPreOrderTraversal() {
+		System.out.println(treeProblems.preOrderTraversal(bst.getRoot(), new StringBuilder()));
+	}
+	
+	@Test
+	public void testInOrderTraversal() {
+		System.out.println(treeProblems.inOrderTraversal(bst.getRoot(), new StringBuilder()));
+	}
+	
+	@Test
+	public void testPostOrderTraversal() {
+		System.out.println(treeProblems.postOrderTraversal(bst.getRoot(), new StringBuilder()));
+	}
+	
+	@Test
+	public void testIsSubTree_Valid() {
+		ITree bst2 = new BinarySearchTree();
+		bst2.insert(new Node(20));
+		bst2.getRoot().setRight(new Node(37));
+		bst2.getRoot().getRight().setLeft(new Node(24));
+		assertTrue(treeProblems.isSubTree(bst2.getRoot(), bst.getRoot()));
+		
+	}
+	
+	@Test
+	public void testIsSubTree_Invalid() {
+		ITree bst2 = new BinarySearchTree();
+		bst2.insert(new Node(20));
+		bst2.getRoot().setRight(new Node(37));
+		bst2.getRoot().getRight().setLeft(new Node(24));
+		bst2.getRoot().getRight().getLeft().setLeft(new Node(100));
+		assertFalse(treeProblems.isSubTree(bst2.getRoot(), bst.getRoot()));
+		
+	}
+	
+	@Test
+	public void testDeletePathLessThanKFromRoot() {
+		treeProblems.deletePathLessThanKFromRoot(bst.getRoot(), 4);
+		bst.levelOrderTraversal();
+	}
+	
+	@Test
+	public void testDeletePathLessThanKFromRoot2() {
+		treeProblems.deletePathLessThanKFromRoot(bst.getRoot(), 3);
+		bst.levelOrderTraversal();
+	}
+	
+	@Test
+	public void testIsSiblings() {
+		assertTrue(treeProblems.isSiblings(bst.getRoot(), new Node(5), new Node(20)));
+		assertTrue(treeProblems.isSiblings(bst.getRoot(), new Node(3), new Node(8)));
+		assertFalse(treeProblems.isSiblings(bst.getRoot(), new Node(37), new Node(60)));
+	}
+	
+	@Test
+	public void testGetLevel() {
+		assertEquals(new Integer(3),treeProblems.getLevel(bst.getRoot(), new Node(58)));
+		assertEquals(new Integer(5),treeProblems.getLevel(bst.getRoot(), new Node(24)));
+	}
+	
+	@Test
+	public void testIsCousins() {
+		assertTrue(treeProblems.isCousins(bst.getRoot(), new Node(5), new Node(58)));
+		assertTrue(treeProblems.isCousins(bst.getRoot(), new Node(8), new Node(37)));
+		assertFalse(treeProblems.isCousins(bst.getRoot(), new Node(15), new Node(91)));
+	}
+	
+	@Test
+	public void testConstructBSTFromSortedArray() {
+		Integer[] elements = {10,20,30,40,50,60,70};
+		ITree bst = new BinarySearchTree(treeProblems.constructBSTFromSortedArray(elements));
+		bst.levelOrderTraversal();
+	}
+	
+	@Test
+	public void testConstructBSTFromSortedArray2() {
+		Integer[] elements = {10,20,30,40,50,60,70,80};
+		ITree bst = new BinarySearchTree(treeProblems.constructBSTFromSortedArray(elements));
+		bst.levelOrderTraversal();
+	}
+	
 }
